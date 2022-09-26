@@ -161,7 +161,8 @@ abstract contract ERC721 {
         }
     }
 
-    /* ----------ERC165---------- */
+    /* ----------ERC165 logic---------- */
+
     function supportsInterface(bytes4 interfaceId)
         public
         view
@@ -175,6 +176,7 @@ abstract contract ERC721 {
     }
 
     /* ----------mint/burn logic----------*/
+
     function _mint(address to, uint256 id) internal virtual {
         if (to == address(0)) {
             revert ERC721__InvalidRecipient();
@@ -250,10 +252,10 @@ abstract contract ERC721 {
 
 abstract contract ERC721TokenReceiver {
     function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes calldata
+        address, /* operator */
+        address, /* from */
+        uint256, /* id */
+        bytes calldata /* data */
     ) external virtual returns (bytes4) {
         return ERC721TokenReceiver.onERC721Received.selector;
     }
