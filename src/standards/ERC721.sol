@@ -9,7 +9,9 @@ error ERC721__UnsafeRecipient(address recipient);
 error ERC721__InvalidRecipient();
 
 abstract contract ERC721 {
-    /* ----------events---------- */
+    // =============================================================
+    //                           EVENTS
+    // =============================================================
 
     event Transfer(
         address indexed from,
@@ -29,7 +31,9 @@ abstract contract ERC721 {
         bool approved
     );
 
-    /* ----------state variables---------- */
+    // =============================================================
+    //                           STATE VARIABLES
+    // =============================================================
 
     /* ----------metadata---------- */
     string public name;
@@ -67,7 +71,10 @@ abstract contract ERC721 {
         symbol = _symbol;
     }
 
-    /* ----------ERC721 logic---------- */
+    // =============================================================
+    //                           ERC721 LOGIC
+    // =============================================================
+
     function approve(address spender, uint256 id) public virtual {
         address owner = _ownerOf[id];
 
@@ -161,7 +168,9 @@ abstract contract ERC721 {
         }
     }
 
-    /* ----------ERC165 logic---------- */
+    // =============================================================
+    //                           ERC165 LOGIC
+    // =============================================================
 
     function supportsInterface(bytes4 interfaceId)
         public
@@ -175,7 +184,9 @@ abstract contract ERC721 {
             interfaceId == 0x5b5e139f; // ERC165 Interface ID for ERC721Metadata
     }
 
-    /* ----------mint/burn logic----------*/
+    // =============================================================
+    //                           MINT/BURN LOGIC
+    // =============================================================
 
     function _mint(address to, uint256 id) internal virtual {
         if (to == address(0)) {

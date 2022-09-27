@@ -5,7 +5,9 @@ error ERC1155__NotAuthorized();
 error ERC1155__UnsafeRecipient(address recipient);
 
 abstract contract ERC1155 {
-    /* ----------events---------- */
+    // =============================================================
+    //                           EVENTS
+    // =============================================================
 
     event TransferSingle(
         address indexed operator,
@@ -31,7 +33,9 @@ abstract contract ERC1155 {
 
     event URI(string value, uint256 indexed id);
 
-    /* ----------state variables---------- */
+    // =============================================================
+    //                           STATE VARIABLES
+    // =============================================================
 
     mapping(address => mapping(uint256 => uint256)) public balanceOf;
 
@@ -41,7 +45,9 @@ abstract contract ERC1155 {
 
     function uri(uint256 id) public view virtual returns (string memory);
 
-    /* ----------ERC1155 logic---------- */
+    // =============================================================
+    //                           ERC1155 LOGIC
+    // =============================================================
 
     function setApprovalForAll(address operator, bool approved) public virtual {
         isApprovedForAll[msg.sender][operator] = approved;
@@ -146,7 +152,9 @@ abstract contract ERC1155 {
         }
     }
 
-    /* ----------ERC165 logic---------- */
+    // =============================================================
+    //                           ERC165 LOGIC
+    // =============================================================
 
     function supportsInterface(bytes4 interfaceId)
         public
@@ -160,7 +168,9 @@ abstract contract ERC1155 {
             interfaceId == 0x0e89341c; // ERC165 Interface ID for ERC1155MetadataURI
     }
 
-    /* ----------mint/burn logic----------*/
+    // =============================================================
+    //                           MINT/BURN LOGIC
+    // =============================================================
 
     function _mint(
         address to,
